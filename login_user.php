@@ -7,6 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+
+        body {
+        background-image: url('asset/images3.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        }
         .modal {
             display: none;
             position: fixed;
@@ -102,6 +110,7 @@
                         class="w-full p-2 border rounded-lg"
                     >
                 </div>
+                
 
                 <div class="mb-4">
                     <label for="registerEmail" class="block text-gray-700 font-bold mb-2">Email</label>
