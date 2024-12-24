@@ -1,229 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>ApotekFlex</title>
-    <style>
-      :root {
-        --primary-color: #fead53;
-        --text-dark: #333333;
-        --text-light: #ffffff33;
-        --extra-light: #f3f4f6;
-
-        --max-width: 1300px;
-      }
-
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      input::placeholder {
-        color: var(--extra-light);
-      }
-
-      body {
-        font-family: "Open Sans", sans-serif;
-        min-height: 120vh;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.25)
-          ),
-          url("asset/images3.jpg");
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-
-      .container {
-        display: flex;
-        min-height: 100vh;
-        max-width: var(--max-width);
-        margin: auto;
-        padding: 2rem;
-        padding-top: 100px;
-        position: relative;
-      }
-
-      form {
-        width: 350px;
-        display: grid;
-        border-radius: 5px;
-        background-color: var(--text-light);
-        color: var(--extra-light);
-      }
-
-      form h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        padding: 2rem;
-      }
-
-      .form__group {
-        display: grid;
-        padding: 0 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .form__group input,
-      .form__group textarea {
-        padding: 0.5rem;
-        font-size: 1rem;
-        color: var(--extra-light);
-        background-color: transparent;
-        outline: none;
-        border: none;
-        border-bottom: 2px solid var(--extra-light);
-      }
-
-      .error-message {
-        color: red;
-        font-size: 0.8rem;
-        margin-top: 0.5rem;
-      }
-
-      form button {
-        margin-top: 1rem;
-        padding: 1rem;
-        font-size: 1rem;
-        font-weight: 600;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        background-color: var(--primary-color);
-        color: var(--extra-light);
-        cursor: pointer;
-      }
-
-      .bottom__tracker {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 1rem;
-      }
-
-      .bottom__tracker span {
-        display: inline-block;
-        height: 4px;
-        width: 100px;
-        background-color: var(--text-light);
-      }
-
-      .bottom__tracker span:nth-child(2) {
-        background-color: var(--extra-light);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <form id="registrationForm">
-        <h4>Registrasi Pengguna Baru</h4>
-
-        <!-- Nama Lengkap -->
-        <div class="form__group">
-          <label for="fullName">Nama Lengkap</label>
-          <input
-            type="text"
-            id="fullName"
-            placeholder="Masukkan nama lengkap"
-            required
-          />
-          <p class="error-message" id="fullNameError"></p>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApotikTitikKoma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-bold">ApotikTitikKoma</h1>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#" class="hover:text-blue-200">Beranda</a>
+                    <a href="#" class="hover:text-blue-200">Produk</a>
+                    <a href="https://wa.me/089506006132" class="hover:text-blue-200">Konsultasi</a>
+                    <a href="#" class="hover:text-blue-200">Tentang Kami</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Improved Cart Icon Placement -->
+                <div class="relative cursor-pointer mr-2" id="cart-icon">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs" id="cart-count">0</span>
+                </div>
+                
+                <!-- Login Button -->
+                <a href="login_user.php" class="px-4 py-2 bg-blue-800 rounded-lg hover:bg-blue-700 text-white flex items-center">    
+                    <i class="fas fa-user mr-2"></i> Masuk 
+                </a>
+            </div>
         </div>
+    </header>
 
-        <!-- Pendidikan -->
-        <div class="form__group">
-          <label for="education">Pendidikan</label>
-          <input
-            type="text"
-            id="education"
-            placeholder="Masukkan pendidikan terakhir"
-            required
-          />
+    <!-- Pencarian -->
+    <div class="container mx-auto my-6 px-4 flex space-x-4">
+        <div class="relative flex-grow">
+            <input 
+                type="text" 
+                placeholder="Cari obat, kategori, atau penyakit..." 
+                class="w-full p-2 pl-10 border rounded-lg"
+            >
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         </div>
-
-        <!-- Alamat Email -->
-        <div class="form__group">
-          <label for="email">Alamat Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Masukkan email"
-            required
-          />
-          <p class="error-message" id="emailError"></p>
-        </div>
-
-        <!-- Username -->
-        <div class="form__group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            placeholder="Masukkan username"
-            required
-          />
-        </div>
-
-        <!-- Nomor Telepon -->
-        <div class="form__group">
-          <label for="phone">Nomor Telepon</label>
-          <input
-            type="tel"
-            id="phone"
-            placeholder="Masukkan nomor telepon"
-            required
-          />
-        </div>
-
-        <!-- Password -->
-        <div class="form__group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Masukkan password"
-            required
-          />
-        </div>
-
-        <!-- Alamat Rumah -->
-        <div class="form__group">
-          <label for="address">Alamat Rumah</label>
-          <textarea
-            id="address"
-            placeholder="Masukkan alamat rumah"
-            rows="4"
-            required
-          ></textarea>
-        </div>
-
-        <button type="submit">Daftar</button>
-      </form>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">Cari</button>
     </div>
 
-    <div class="bottom__tracker">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Layanan Cepat -->
+    <section class="container mx-auto my-6 px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                <a href="upload_resep.php" class="block">
+                    <i class="fas fa-capsules text-blue-600 text-4xl mb-2"></i>
+                    <h3>Resep Obat</h3>
+                </a>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                <a href="https://wa.me/6289506006132" target="_blank" class="block">
+                    <i class="fas fa-stethoscope text-blue-600 text-4xl mb-2"></i>
+                    <h3>Konsultasi</h3>
+                </a>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                <i class="fas fa-heartbeat text-blue-600 text-4xl mb-2"></i>
+                <h3>Kesehatan</h3>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                <i class="fas fa-map-marker-alt text-blue-600 text-4xl mb-2"></i>
+                <h3>Lokasi Apotek</h3>
+            </div>
+        </div>
+    </section>
+
+     <!-- foto slide -->
+     <section class="container mx-auto my-6 px-4">
+        <div id="image-slider" class="relative w-full h-64 md:h-96 overflow-hidden rounded-lg shadow-md">
+            <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('https://via.placeholder.com/1600x600?text=Promo+Obat+1');" data-index="0"><img src="asset/promo.jpg"></div>
+            <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('https://via.placeholder.com/1600x600?text=Promo+Obat+1');" data-index="0"><img src="asset/promo1.png"></div>
+            <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('https://via.placeholder.com/1600x600?text=Promo+Obat+1');" data-index="0"><img src="asset/promo2.png"></div>
+            
+            <!-- Navvigasi batton-->
+            <button id="prev-slide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-slide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Slide Indikator -->
+            <div id="slide-indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slide-indicator active" data-index="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slide-indicator" data-index="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slide-indicator" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slider-image');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const indicators = document.querySelectorAll('.slide-indicator');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.style.opacity = '0';
+                });
+
+                // Show current slide
+                slides[index].style.opacity = '1';
+
+                // Update indicators
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('bg-white');
+                    indicator.classList.add('bg-opacity-50');
+                });
+                indicators[index].classList.add('bg-white');
+                indicators[index].classList.remove('bg-opacity-50');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Auto slide functionality
+            function startAutoSlide() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners
+            nextButton.addEventListener('click', () => {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+
+            prevButton.addEventListener('click', () => {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    const index = parseInt(indicator.getAttribute('data-index'));
+                    stopAutoSlide();
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    startAutoSlide();
+                });
+            });
+
+            // Show initial slide and start auto-sliding
+            showSlide(0);
+            startAutoSlide();
+        });
+    </script>
+
+
+
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+        <div class="bg-white w-full max-w-2xl rounded-lg shadow-lg p-4 relative">
+            <div class="flex justify-between items-center border-b pb-2 mb-4">
+                <h2 class="text-xl font-bold">Keranjang</h2>
+                <button id="close-cart" class="text-gray-600 hover:text-gray-800 absolute top-2 right-2 text-2xl">&times;</button>
+            </div>
+
+            <div id="cart-items" class="space-y-4 max-h-96 overflow-y-auto">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+
+            <div class="mt-6 border-t pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-gray-600">Total Barang</p>
+                    <p class="font-semibold" id="total-items">0</p>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-gray-600">Total Harga</p>
+                    <p class="font-bold text-lg text-blue-600" id="total-price">Rp 0</p>
+                </div>
+                <button id="checkout-button" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                    Checkout
+                </button>
+            </div>
+        </div>
     </div>
-  </body>
+
+    <!-- Produk Terbaru Section -->
+    <section class="container mx-auto my-6 px-4">
+        <h2 class="text-2xl font-bold mb-4">Produk Terbaru</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Produk 1-->
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk1.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produk 2-->
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Obat tidur</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 10.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk2.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Produk 3-->
+             <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk3.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Produk 4-->
+             <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk4.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produk 5-->
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk5.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produk 6-->
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk6.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produk 7-->
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk7.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Produk 8-->
+             <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative product-card">
+                <div class="absolute top-2 right-2 z-10">
+                    <button class="love-button text-gray-400 hover:text-red-500">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <img src="https://via.placeholder.com/300x300" alt="Paracetamol" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h3 class="font-bold product-name">Paracetamol</h3>
+                    <p class="text-blue-600 font-semibold product-price">Rp 15.000</p>
+                    <p class="text-sm text-gray-500">Stok: <span class="product-stock">10</span></p>
+                    <div class="flex space-x-2">
+                        <button class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg add-to-cart">
+                            Tambah ke Keranjang
+                        </button>
+                        <a href="produk8.php" class="mt-2 w-full bg-green-600 text-white py-2 rounded-lg text-center"> 
+                            Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-700 text-white py-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <div>
+                <h4 class="font-bold mb-4">ApotikTitikKoma</h4>
+                <p>Platform pemesanan obat online terpercaya dan aman.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Hubungi Kami</h4>
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-phone"></i>
+                        <span>0812-3456-7890</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-envelope"></i>
+                        <span>layanan@apotiktitikoma</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Informasi</h4>
+                <nav class="space-y-2">
+                    <a href="#" class="block hover:text-blue-200">Syarat & Ketentuan</a>
+                    <a href="#" class="block hover:text-blue-200">Kebijakan Privasi</a>
+                    <a href="#" class="block hover:text-blue-200">FAQ</a>
+                </nav>
+            </div>
+        </div>
+        <div class="container mx-auto mt-6 text-center border-t border-blue-600 pt-4 px-4">
+            © 2024 Apotiktitikkoma. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.getElementById('cart-icon');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCartButton = document.getElementById('close-cart');
+            const cartItems = document.getElementById('cart-items');
+            const totalItemsElement = document.getElementById('total-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const checkoutButton = document.getElementById('checkout-button');
+            const cartCountElement = document.getElementById('cart-count');
+
+            let cart = [];
+
+            // Toggle Cart Modal
+            cartIcon.addEventListener('click', () => {
+                updateCartDisplay();
+                cartModal.classList.remove('hidden');
+            });
+
+            closeCartButton.addEventListener('click', () => {
+                cartModal.classList.add('hidden');
+            });
+
+            // Add to Cart Functionality
+            function addToCart(productCard) {
+                const productName = productCard.querySelector('.product-name').textContent;
+                const productPrice = productCard.querySelector('.product-price').textContent;
+                const productStock = parseInt(productCard.querySelector('.product-stock').textContent);
+
+                if (productStock > 0) {
+                    // Check if product already in cart
+                    const existingItem = cart.find(item => item.name === productName);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ 
+                            name: productName, 
+                            price: productPrice, 
+                            quantity: 1 
+                        });
+                    }
+
+                    // Update cart count and display
+                    updateCartDisplay();
+                    alert(`${productName} ditambahkan ke keranjang!`);
+                } else {
+                    alert(`Stok ${productName} habis!`);
+                }
+            }
+
+            // Update Cart Display
+            function updateCartDisplay() {
+                cartItems.innerHTML = '';
+                let totalItems = 0;
+                let totalPrice = 0;
+
+                cart.forEach((item, index) => {
+                    const price = parseFloat(item.price.replace('Rp ', '').replace('.', ''));
+                    const itemTotal = price * item.quantity;
+                    totalItems += item.quantity;
+                    totalPrice += itemTotal;
+
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('flex', 'items-center', 'justify-between');
+                    cartItemElement.innerHTML = `
+                        <div class="flex items-center space-x-4">
+                            <div>
+                                <h3 class="font-semibold">${item.name}</h3>
+                                <p class="text-gray-600">${item.price}</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-decrease bg-gray-200 px-2 rounded" data-index="${index}">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-increase bg-gray-200 px-2 rounded" data-index="${index}">+</button>
+                            </div>
+                        </div>
+                        <p class="font-semibold">Rp ${(itemTotal).toLocaleString()}</p>
+                    `;
+                    cartItems.appendChild(cartItemElement);
+                });
+
+                // Update total items and price
+                totalItemsElement.textContent = totalItems;
+                totalPriceElement.textContent = `Rp ${totalPrice.toLocaleString()}`;
+                cartCountElement.textContent = totalItems;
+            }
+
+            // Quantity Adjustment
+            cartItems.addEventListener('click', (e) => {
+                const decreaseBtn = e.target.closest('.quantity-decrease');
+                const increaseBtn = e.target.closest('.quantity-increase');
+
+                if (decreaseBtn) {
+                    const index = decreaseBtn.dataset.index;
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity -= 1;
+                    } else {
+                        cart.splice(index, 1);
+                    }
+                    updateCartDisplay();
+                }
+
+                if (increaseBtn) {
+                    const index = increaseBtn.dataset.index;
+                    cart[index].quantity += 1;
+                    updateCartDisplay();
+                }
+            });
+
+            // Checkout Button
+            checkoutButton.addEventListener('click', () => {
+                if (cart.length > 0) {
+                    window.location.href = 'checkout.php';
+                } else {
+                    alert('Keranjang Anda kosong!');
+                }
+            });
+
+            // Add to Cart Button Listeners
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productCard = e.target.closest('.product-card');
+                    addToCart(productCard);
+                });
+            });
+
+            // Wishlist Functionality
+            document.querySelectorAll('.love-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const heartIcon = e.target.closest('.love-button i');
+                    heartIcon.classList.toggle('text-red-500');
+                });
+            });
+        });
+    </script>
+</body>
 </html>
