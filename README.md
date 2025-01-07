@@ -14,4 +14,10 @@ Tim teknologi akan membuat aplikasi berbasis Android, iOS, dan situs web respons
 Dengan adanya Apotek Titik Koma, diharapkan masyarakat dapat memperoleh akses layanan kesehatan yang lebih mudah dan modern, sekaligus mendukung perkembangan digitalisasi di sektor farmasi.
 
 
+ANGGOTA TITIK KOMA:
+1. Muhammad Rizki Syaban Lahay (2310120026)
+2. Usamah Azzikri (2310120029)
+3. Mutiara Savitrie (2310120028)
+
+
 
