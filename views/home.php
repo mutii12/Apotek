@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body class="bg-gray-50">
     <?php include 'header.php'; ?>
 
@@ -32,11 +37,18 @@
                     <h3>Cek Dokter</h3>
                 </a>
             </div>
-            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">               
-                <a href="views/login.php" class="block">
-                    <i class="fas fa-heartbeat text-blue-600 text-4xl mb-2"></i>
-                    <h3>Login</h3>
-                </a>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+                <?php if (isset($_SESSION['nama'])): ?>
+                    <a href="controllers/LogoutController.php" class="block">
+                        <i class="fas fa-sign-out-alt text-blue-600 text-4xl mb-2"></i>
+                        <h3>Logout</h3>
+                    </a>
+                <?php else: ?>
+                    <a href="views/login.php" class="block">
+                        <i class="fas fa-sign-in-alt text-blue-600 text-4xl mb-2"></i>
+                        <h3>Login</h3>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -47,7 +59,7 @@
             <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('assets/images/promo.jpg');" data-index="0"></div>
             <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('assets/images/promo1.png');" data-index="1"></div>
             <div class="slider-image absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out" style="background-image: url('assets/images/promo2.png');" data-index="2"></div>
-            
+
             <!-- Navigation Buttons -->
             <button id="prev-slide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75">
                 <i class="fas fa-chevron-left"></i>
@@ -68,4 +80,5 @@
     <?php include 'footer.php'; ?>
     <script src="script.js"></script>
 </body>
+
 </html>

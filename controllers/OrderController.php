@@ -13,4 +13,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $orders = $order->getAllOrders();
 $obatList = $order->getObatList();
 include '../views/order_baru.php';
-?>
