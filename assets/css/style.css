@@ -1,0 +1,65 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+header {
+    background-color: #1E3A8A; /* Warna biru gelap */
+}
+
+header h1 {
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #1E40AF; /* Warna biru lebih gelap */
+}
+
+footer h4 {
+    color: white;
+}
+
+/* Button */
+button {
+    cursor: pointer;
+}
+
+/* Modal Keranjang */
+#cart-modal {
+    transition: opacity 0.3s ease;
+}
+
+#cart-modal .bg-white {
+    transition: transform 0.3s ease;
+}
+
+/* Produk */
+.product-name {
+    font-size: 1.25rem;
+}
+
+.product-price {
+    font-size: 1.125rem;
+}
+
+/* Slider */
+.slider-image {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
